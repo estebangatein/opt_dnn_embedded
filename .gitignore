@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+tesitng_data/*
+validation_data/*
+testing/*
+
 # C extensions
 *.so
 
