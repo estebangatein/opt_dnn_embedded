@@ -1,0 +1,96 @@
+[  1%] Built target freertos_printf
+[ 14%] Built target bsp
+[ 34%] Built target pmsis_implem
+[ 36%] Built target ri5cy-gap9
+[ 40%] Built target freertos_libs
+[ 41%] Built target freertos_pmsis_backend
+[ 47%] Built target pmsis_rtos
+[ 51%] Built target freertos_gap9
+[ 52%] Built target dt
+[ 58%] Built target freertos
+[ 60%] Built target gap_lib
+[100%] Built target model_trained_SQ8
+[100%] Built target image
+Flashing image with command:
+openocd -c "gdb_port disabled; telnet_port 8555; tcl_port disabled" -f "/home/ubuntu/gap_sdk_private/utils/openocd_tools/tcl/gapuino_ftdi.cfg" -f "/home/ubuntu/gap9_sdk_public/utils/openocd_tools/tcl/gap9revb.tcl" 
+Open On-Chip Debugger 0.10.0+dev-00841-g1449af5bd (2024-10-03-07:08)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : auto-selecting first available session transport "jtag". To override use 'transport select <transport>'.
+TAP: gap9.riscv
+
+TAP: gap9.pulp
+
+Error: no device found
+Error: unable to open ftdi device with vid 0403, pid 6010, description '*', serial '*' at bus location '*'
+Info : clock speed 5000 kHz
+jtag init
+ret1=00000000
+ret2=00000000
+ret1=80007A16
+ret=03
+INIT: confreg polling done
+Info : datacount=2 progbufsize=8
+Info : Examined RISC-V core; found 10 harts
+Info :  hart 0: currently disabled
+Info :  hart 1: currently disabled
+Info :  hart 2: currently disabled
+Info :  hart 3: currently disabled
+Info :  hart 4: currently disabled
+Info :  hart 5: currently disabled
+Info :  hart 6: currently disabled
+Info :  hart 7: currently disabled
+Info :  hart 8: currently disabled
+Info :  hart 9: XLEN=32, misa=0x40901124
+examine done
+Info : JTAG tap: gap9.riscv tap/device found: 0x20020bcb (mfg: 0x5e5 (<unknown>), part: 0x0020, ver: 0x2)
+Info : JTAG tap: gap9.pulp tap/device found: 0x20021bcb (mfg: 0x5e5 (<unknown>), part: 0x0021, ver: 0x2)
+Info : gdb port disabled
+Ready for Remote Connections
+Info : tcl server disabled
+Info : Listening on port 8555 for telnet connections
+loading flash.bin_0 to spi - copied 0 / 424840 Bytes - 0.00 %loading flash.bin_0 to spi - copied 16384 / 424840 Bytes - 3.86 %loading flash.bin_0 to spi - copied 32768 / 424840 Bytes - 7.71 %loading flash.bin_0 to spi - copied 49152 / 424840 Bytes - 11.57 %loading flash.bin_0 to spi - copied 65536 / 424840 Bytes - 15.43 %loading flash.bin_0 to spi - copied 81920 / 424840 Bytes - 19.28 %loading flash.bin_0 to spi - copied 98304 / 424840 Bytes - 23.14 %loading flash.bin_0 to spi - copied 114688 / 424840 Bytes - 27.00 %loading flash.bin_0 to spi - copied 131072 / 424840 Bytes - 30.85 %loading flash.bin_0 to spi - copied 147456 / 424840 Bytes - 34.71 %loading flash.bin_0 to spi - copied 163840 / 424840 Bytes - 38.57 %loading flash.bin_0 to spi - copied 180224 / 424840 Bytes - 42.42 %loading flash.bin_0 to spi - copied 196608 / 424840 Bytes - 46.28 %loading flash.bin_0 to spi - copied 212992 / 424840 Bytes - 50.13 %loading flash.bin_0 to spi - copied 229376 / 424840 Bytes - 53.99 %loading flash.bin_0 to spi - copied 245760 / 424840 Bytes - 57.85 %loading flash.bin_0 to spi - copied 262144 / 424840 Bytes - 61.70 %loading flash.bin_0 to spi - copied 278528 / 424840 Bytes - 65.56 %loading flash.bin_0 to spi - copied 294912 / 424840 Bytes - 69.42 %loading flash.bin_0 to spi - copied 311296 / 424840 Bytes - 73.27 %loading flash.bin_0 to spi - copied 327680 / 424840 Bytes - 77.13 %loading flash.bin_0 to spi - copied 344064 / 424840 Bytes - 80.99 %loading flash.bin_0 to spi - copied 360448 / 424840 Bytes - 84.84 %loading flash.bin_0 to spi - copied 376832 / 424840 Bytes - 88.70 %loading flash.bin_0 to spi - copied 393216 / 424840 Bytes - 92.56 %loading flash.bin_0 to spi - copied 409600 / 424840 Bytes - 96.41 %loading flash.bin_0 to spi - copied 424840 / 424840 Bytes - 100.00 %
+loading mram.bin_0 to mram - copied 0 / 197920 Bytes - 0.00 %loading mram.bin_0 to mram - copied 16384 / 197920 Bytes - 8.28 %loading mram.bin_0 to mram - copied 32768 / 197920 Bytes - 16.56 %loading mram.bin_0 to mram - copied 49152 / 197920 Bytes - 24.83 %loading mram.bin_0 to mram - copied 65536 / 197920 Bytes - 33.11 %loading mram.bin_0 to mram - copied 81920 / 197920 Bytes - 41.39 %loading mram.bin_0 to mram - copied 98304 / 197920 Bytes - 49.67 %loading mram.bin_0 to mram - copied 114688 / 197920 Bytes - 57.95 %loading mram.bin_0 to mram - copied 131072 / 197920 Bytes - 66.22 %loading mram.bin_0 to mram - copied 147456 / 197920 Bytes - 74.50 %loading mram.bin_0 to mram - copied 163840 / 197920 Bytes - 82.78 %loading mram.bin_0 to mram - copied 180224 / 197920 Bytes - 91.06 %loading mram.bin_0 to mram - copied 196608 / 197920 Bytes - 99.34 %loading mram.bin_0 to mram - copied 197920 / 197920 Bytes - 100.00 %
+[100%] Built target flash
+TAP: gap9.riscv
+
+TAP: gap9.pulp
+
+jtag init
+ret1=00000000
+ret2=00000000
+ret1=80007A16
+ret=03
+
+
+	 *** NNTOOL model_trained_SQ8 Example ***
+
+Entering main controller
+FC Frequency = 370000000 Hz CL Frequency = 370000000 Hz PERIPH Frequency = 370000000 Hz
+Voltage: 800mV
+Constructor
+Image /home/ubuntu/gap9_sdk_public/examples/gap9/nn/nntool/postq_fasdd/fasdd/images/output.pgm:  [W: 200, H: 200] Bytes per pixel 1, HeaderSize: 15
+Image /home/ubuntu/gap9_sdk_public/examples/gap9/nn/nntool/postq_fasdd/fasdd/images/output.pgm, [W: 200, H: 200], Bytes per pixel 1, Size: 40000 bytes, Loaded successfully
+Some values of the Input for verification are: -44 and -49 and -55
+Call cluster
+Start timer
+Runner completed
+Output_1: 106, 85, 77, 126
+Output_2: 89, 32, 4, 85
+
+                        S4__conv1_Conv_fusion: Cycles:       775518, Cyc%:  12.4%, Operations:      4160000, Op%:  12.3%, Operations/Cycle: 5.364157
+                        S7__conv2_Conv_fusion: Cycles:      2048830, Cyc%:  32.7%, Operations:     11520000, Op%:  34.0%, Operations/Cycle: 5.622721
+                   S13__fc_objects_early_Gemm: Cycles:       102406, Cyc%:   1.6%, Operations:       320000, Op%:   0.9%, Operations/Cycle: 3.124817
+             S10__conv3_Conv_reshape_in_qout0: Cycles:        74023, Cyc%:   1.2%, Operations:        80000, Op%:   0.2%, Operations/Cycle: 1.080745
+                       S18__conv3_Conv_fusion: Cycles:      2120742, Cyc%:  33.8%, Operations:     11560000, Op%:  34.1%, Operations/Cycle: 5.450922
+                       S21__conv4_Conv_fusion: Cycles:      1132600, Cyc%:  18.1%, Operations:      6230016, Op%:  18.4%, Operations/Cycle: 5.500632
+                   S24__fc_objects_final_Gemm: Cycles:        17593, Cyc%:   0.3%, Operations:        43264, Op%:   0.1%, Operations/Cycle: 2.459160
+                                      IO_Wait: Cycles:            0, Cyc%:   0.0%, Operations:            0, Op%:   0.0%, Operations/Cycle: nan
+
+                                        Total: Cycles:      6271712, Cyc%: 100.0%, Operations:     33913280, Op%: 100.0%, Operations/Cycle: 5.407340
+
+Ended
+Launching execution with command:
+openocd -d0 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "/home/ubuntu/gap_sdk_private/utils/openocd_tools/tcl/gapuino_ftdi.cfg" -f "/home/ubuntu/gap9_sdk_public/utils/openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary /home/ubuntu/gap9_sdk_public/examples/gap9/nn/nntool/postq_fasdd/fasdd/build/model_trained_SQ8 0x1c010160"
+[100%] Built target run
