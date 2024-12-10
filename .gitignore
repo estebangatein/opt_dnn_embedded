@@ -6,6 +6,7 @@ __pycache__/
 tesitng_data/*
 validation_data/*
 testing/*
+calibration_data/*
 
 # C extensions
 *.so
