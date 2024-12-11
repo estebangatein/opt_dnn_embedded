@@ -103,6 +103,7 @@ class TwoEE(nn.Module):
 model = TwoEE()
 criterion_binary = nn.BCEWithLogitsLoss()  # Para la salida binaria
 criterion_regression = nn.MSELoss()  # Para la salida de regresión
+criterion_regression = nn.SmoothL1Loss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 
@@ -194,7 +195,7 @@ def train_model(
                 total_loss_batch += loss_regression
 
                 # Calcular MSE para regresión
-                mse_train += loss_regression.item() * regression_mask.sum().item()
+                mse_train += 3 * loss_regression.item() * regression_mask.sum().item()
 
                 loss_regression_ee = criterion_regression(
                     regression_pred_ee[regression_mask].float(),
@@ -439,7 +440,7 @@ train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True, collat
 val_dataloader = DataLoader(val_dataset, batch_size=32, shuffle=False, collate_fn=collate_fn)
 
 
-trained_model, _ = train_model(train_dataloader, val_dataloader, model,optimizer, criterion_regression, criterion_binary, epochs=50)
+trained_model, _ = train_model(train_dataloader, val_dataloader, model,optimizer, criterion_regression, criterion_binary, epochs=10)
 
 
 trained_model.to('cpu')
