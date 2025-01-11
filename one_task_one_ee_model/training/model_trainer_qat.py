@@ -31,8 +31,8 @@ def dataset_creator(path_to_folder, max_by_experiment = 3):
                     if 'fire' in file and fire < max_by_experiment:
                         fire += 1
                         for pic in sorted(os.listdir(os.path.join(path_to_folder, folder, 'images'))):
-                            img = load_img(os.path.join(os.path.join(path_to_folder, folder, 'images'), pic), target_size=(200, 200), color_mode='grayscale')  # Ajustar tamaño y modo de color
-                            img_array = img_to_array(img) / 255.0  # Normalizar la imagen
+                            img = load_img(os.path.join(os.path.join(path_to_folder, folder, 'images'), pic), target_size=(200, 200), color_mode='grayscale')  
+                            img_array = img_to_array(img) / 255.0  
                             images.append(img_array)
                         
                         labels_txt = np.loadtxt(os.path.join(path_to_folder, folder, file), delimiter=' ')
@@ -71,15 +71,15 @@ class simple_model(nn.Module):
     def __init__(self, img_channels=1, output_dim_objects=4):
         super(simple_model, self).__init__()
 
-        self.conv1 = nn.Conv2d(img_channels, 16, kernel_size=5, stride=2, padding=2)  # 200x200 -> 100x100
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1)            # 100x100 -> 50x50
+        self.conv1 = nn.Conv2d(img_channels, 16, kernel_size=5, stride=2, padding=2)  
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1)            
 
-        self.fc_objects_early = nn.Linear(32 * 50 * 50, output_dim_objects)           # Early exit after 2 convs
+        self.fc_objects_early = nn.Linear(32 * 50 * 50, output_dim_objects)           
 
-        self.conv3 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)            # 50x50 -> 25x25
-        self.conv4 = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1)            # 25x25 -> 13x13
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)            
+        self.conv4 = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1)            
 
-        self.fc_objects_final = nn.Linear(64 *13* 13, output_dim_objects)           # Final exit after 4 convs
+        self.fc_objects_final = nn.Linear(64 *13* 13, output_dim_objects)           
         
         self.flatten = nn.Flatten()
 
@@ -133,9 +133,8 @@ train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 val_dataset = TensorDataset(X_val, y_val)
 val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False)
 
-# Función de pérdida y optimizador
-criterion = nn.CrossEntropyLoss()  # Función de pérdida para clasificación
-optimizer = optim.Adam(model.parameters(), lr=0.001)  # Optimizador Adam
+criterion = nn.CrossEntropyLoss()  
+optimizer = optim.Adam(model.parameters(), lr=0.001)  
 
 
 metrics = {

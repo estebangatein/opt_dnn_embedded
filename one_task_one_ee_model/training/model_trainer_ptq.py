@@ -34,7 +34,7 @@ def dataset_creator(path_to_folder, max_by_experiment=3):
 
     return np.array(images), np.array(labels)
 
-# Loading training and validation data
+# loading training and validation data
 images_train, labels_train = dataset_creator('../data/merged_data/training', 100)
 indices = np.random.permutation(images_train.shape[0])
 images_train, labels_train = images_train[indices], labels_train[indices]
@@ -149,7 +149,7 @@ def train_model(model, train_loader, val_loader, num_epochs=10):
                 val_corrects_final += (final_exit.argmax(1) == labels).sum().item()
                 val_total += labels.size(0)
 
-        # Store validation metrics
+        # store validation metrics
         metrics["val_loss"].append(val_loss / val_total)
         metrics["val_acc_early"].append(val_corrects_early / val_total)
         metrics["val_acc_final"].append(val_corrects_final / val_total)
@@ -166,7 +166,7 @@ def train_model(model, train_loader, val_loader, num_epochs=10):
 
 
 
-# Prepare DataLoaders
+# prepare DataLoaders
 X_train = torch.from_numpy(images_train)
 y_train = torch.from_numpy(labels_train)
 X_val = torch.from_numpy(images_val)
@@ -177,13 +177,13 @@ train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 val_dataset = TensorDataset(X_val, y_val)
 val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False)
 
-# Create DataLoader for calibration data
+# create dataloader for calibration data
 X_calibration = torch.from_numpy(images_val[:100])  # Using a subset for calibration
 y_calibration = torch.from_numpy(labels_val[:100])
 calibration_dataset = TensorDataset(X_calibration, y_calibration)
 calibration_loader = DataLoader(calibration_dataset, batch_size=16, shuffle=False)
 
-# Initialize model
+
 model = simple_model()
 
 
@@ -203,7 +203,7 @@ class CalibrationDataReader:
     def get_next(self):
         if self.data_index < len(self.calibration_files):
             input_data = np.load(self.calibration_files[self.data_index])
-            input_data = np.expand_dims(input_data, axis=0)  # Add batch dimension
+            input_data = np.expand_dims(input_data, axis=0)  
             self.data_index += 1
             return {'input': input_data.astype(np.float32)}
         else:
@@ -212,34 +212,32 @@ class CalibrationDataReader:
     def rewind(self):
         self.data_index = 0
 
-# Path to the calibration data
-calibration_dir = './calibration_data'
 
-# Set up calibration data reader
+calibration_dir = './calibration_data'
 calibration_data_reader = CalibrationDataReader(calibration_dir)
 
 
 onnx_model_path = 'model_trained.onnx'
 onnx_quantized_model_path = 'quantized_model.onnx'
 
+# quantization
 quantize_static(
-    onnx_model_path,                      # Input ONNX model
-    onnx_quantized_model_path,            # Output ONNX quantized model
-    calibration_data_reader,              # Calibration data reader
-    quant_format=QuantType.QInt8,         # Quantization format (QInt8 for full int8 quantization)
-    weight_type=QuantType.QInt8           # Quantize weights and activations
+    onnx_model_path,                      
+    onnx_quantized_model_path,            
+    calibration_data_reader,              
+    quant_format=QuantType.QInt8,         
+    weight_type=QuantType.QInt8           
 )
 
 print(f"Quantized model saved to {onnx_quantized_model_path}")
 
-
+# testing quantized model
 ort_session = ort.InferenceSession(onnx_quantized_model_path)
 
-# Prepare input (e.g., use one of your validation samples)
-input_image = images_val[11:12]  # Assuming images_val is already loaded
+input_image = images_val[11:12] 
 input_image = input_image.astype(np.float32)
 
-# Run inference on the quantized model
+# run inference 
 outputs = ort_session.run(None, {'input': input_image})
 
 early_exit, final_exit = outputs
