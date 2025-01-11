@@ -4,27 +4,33 @@ This repository provides the implementation and experimentation code used to opt
 
 The repository is organized as follows:
 
-├── drone_bandit/  
-│   ├── server_simulation/    # files for the cloud implementation of the edge-to-cloud strategy  
-│   ├── context_vectors_extraction/    # scripts to extract context vectors for DroneBandit  
-│   ├── model_sequentializer/   # code to convert functional models as sequential blocks  
-│
-├── one_task_one_ee_model/    # includes the code for the results extraction and the training of the considered model
-|   ├── results/
-|   ├── training/
-│
-├── three_tasks_one_ee_model/  
-│   ├── early_exit/    # files for results and training of the model for early exits
-                ...
-│   ├── knowledge_distillation/    # files for results and training of the model for knowledge distillation
-                ...
-│
-...    # same structure for the other models
-│
-└── two_task_two_ee_model/        
+- **`drone_bandit/`**
+  - **`server_simulation/`**  
+    Files for the cloud implementation of the edge-to-cloud strategy.
+  - **`context_vectors_extraction/`**  
+    Scripts to extract context vectors for DroneBandit.
+  - **`model_sequentializer/`**  
+    Code to convert functional models into sequential blocks.
+
+- **`one_task_one_ee_model/`**
+  - **`results/`**  
+    Code and scripts for results extraction of the model.
+  - **`training/`**  
+    Files for training the considered model.
+
+- **`three_tasks_one_ee_model/`**
+  - **`early_exit/`**  
+    Files for results extraction and training for the model with early exits.
+  - **`knowledge_distillation/`**  
+    Files for results extraction and training for the model with knowledge distillation.
+
+- **`two_task_two_ee_model/`**
+  - Similar structure for results extraction and training files.
+
+... 
 
 
-### Description of Key Directories
+### Description of key directories
 
 - **`drone_bandit/`**  
   Contains files for the DroneBandit project, including:
