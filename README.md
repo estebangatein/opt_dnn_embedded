@@ -1,6 +1,6 @@
 # Optimizing Deep Neural Networks for Resource-Limited Embedded Systems
 
-This repository provides the implementation and experimentation code used to optimize deep neural networks (DNNs) for deployment on resource-constrained embedded systems, specifically targeting the GAP9 processor, presented in the thesis *Optimizing Deep Neural Networks for Resource-Limited Embedded Systems*.
+This repository provides the implementation and experimentation code used to optimize deep neural networks for deployment on resource-constrained embedded systems, specifically targeting the GAP9 processor, presented in the thesis *Optimizing Deep Neural Networks for Resource-Limited Embedded Systems*.
 
 The repository is organized as follows:
 
